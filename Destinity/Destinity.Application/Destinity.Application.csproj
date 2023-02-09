@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Requests\Attendees\Commands\CreateAttendee" />
+      <Folder Include="Requests\Attendees\Queries\GetAttendees" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Destinity.Persistence\Destinity.Persistence.csproj" />
+    </ItemGroup>
+
+</Project>
