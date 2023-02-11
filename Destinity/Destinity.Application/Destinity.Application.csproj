@@ -15,4 +15,14 @@
       <ProjectReference Include="..\Destinity.Persistence\Destinity.Persistence.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Mapster" Version="7.3.0" />
+      <PackageReference Include="Mapster.DependencyInjection" Version="1.0.0" />
+      <PackageReference Include="Mediator.Abstractions" Version="2.0.30" />
+      <PackageReference Include="Mediator.SourceGenerator" Version="2.0.30">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+    </ItemGroup>
+
 </Project>
