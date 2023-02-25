@@ -2,12 +2,10 @@
 WORKDIR /app
 
 # Copy csproj and restore as distinct layers
-COPY ["Destinity.Api/Destinity.Api.csproj", "Destinity.Api/"]
-RUN dotnet restore Destinity.Api/Destinity.Api.csproj
 
 # Copy everything else and build
 COPY . .
-RUN dotnet publish -c Release -o out
+RUN dotnet publish -c Release -o out Destinity/Destinity.Api/Destinity.Api.csproj
 
 # Build runtime image
 FROM mcr.microsoft.com/dotnet/aspnet:7.0
