@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 namespace Destinity.Persistence;
 
 public class ApplicationDbContext : DbContext {
-    public DbSet<AnswerEntity> Answers { get; set; }
-    public DbSet<AttendeeEntity> Attendees { get; set; }
-    public DbSet<EventEntity> Events { get; set; }
+    public DbSet<AnswerEntity> Answers => Set<AnswerEntity>();
+    public DbSet<AttendeeEntity> Attendees => Set<AttendeeEntity>();
+    public DbSet<EventEntity> Events => Set<EventEntity>();
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) {

@@ -1,20 +1,21 @@
-﻿FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS base
+﻿FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build-env
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
-FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
-WORKDIR /src
+# Copy csproj and restore as distinct layers
 COPY ["Destinity.Api/Destinity.Api.csproj", "Destinity.Api/"]
-RUN dotnet restore "Destinity.Api/Destinity.Api.csproj"
+RUN dotnet restore Destinity.Api/Destinity.Api.csproj
+
+# Copy everything else and build
 COPY . .
-WORKDIR "/src/Destinity.Api"
-RUN dotnet build "Destinity.Api.csproj" -c Release -o /app/build
+RUN dotnet publish -c Release -o out
 
-FROM build AS publish
-RUN dotnet publish "Destinity.Api.csproj" -c Release -o /app/publish
-
-FROM base AS final
+# Build runtime image
+FROM mcr.microsoft.com/dotnet/aspnet:7.0
 WORKDIR /app
-COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "Destinity.Api.dll"]
+COPY --from=build-env /app/out .
+
+# Run the app on container startup
+# Use your project name for the second parameter
+# e.g. MyProject.dll
+# ENTRYPOINT [ "dotnet", "Destinity.Api.dll" ]
+CMD ASPNETCORE_URLS="http://*:$PORT" dotnet Destinity.Api.dll

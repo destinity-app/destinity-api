@@ -1,5 +1,6 @@
 using Destinity.Api;
 using Destinity.Api.Services;
+using Destinity.Persistence;
 using GrpcBrowser.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddGrpc();
 builder.Services.AddGrpcBrowser();
+builder.Services.AddApplicationDbContext(builder.Configuration, builder.Environment);
 
 var app = builder.Build();
 

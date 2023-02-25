@@ -14,13 +14,6 @@
     <ItemGroup>
         <PackageReference Include="Grpc.AspNetCore" Version="2.40.0" />
         <PackageReference Include="GrpcBrowser" Version="1.3.3" />
-        <PackageReference Include="HerokuDbConnector" Version="1.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Content Include="..\.dockerignore">
-        <Link>.dockerignore</Link>
-      </Content>
     </ItemGroup>
 
     <ItemGroup>

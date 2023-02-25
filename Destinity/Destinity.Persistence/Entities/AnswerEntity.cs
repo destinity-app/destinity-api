@@ -6,4 +6,5 @@ public record AnswerEntity {
     public Status Status { get; set; }
     public DateTime Start { get; set; }
     public DateTime End { get; set; }
-};
+    public AttendeeEntity? Attendee { get; set; }
+}
