@@ -7,10 +7,10 @@ on:
   push:
     branches: [ "main" ]
 jobs:
-  defaults:
-    run:
-      working-directory: Destinity/Destinity.Api
   build:
+    defaults:
+      run:
+        working-directory: Destinity/Destinity.Api
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
